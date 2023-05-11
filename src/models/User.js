@@ -7,11 +7,28 @@
 
 const UserSchema = (sequelize, DataTypes) => {
   const userTable = sequelize.define('User', {
-    id: DataTypes.INTEGER,
-    displayName: DataTypes.STRING,
-    email: DataTypes.STRING,
-    password: DataTypes.STRING,
-    image: DataTypes.STRING,
+    id: {
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true,
+      type: DataTypes.INTEGER,
+    },
+    displayName: {
+      defaultValue: false,
+      type: DataTypes.STRING,
+    },
+    email: {
+      defaultValue: false,
+      type: DataTypes.STRING,
+      unique: true,
+    },
+    password: {
+      defaultValue: false,
+      type: DataTypes.STRING,
+    },
+    image: {
+      type: DataTypes.STRING,
+    },
   }, {
     tableName: 'users',
     timestamps: false,
