@@ -1,14 +1,14 @@
 'use strict';
-/** @type {import('sequelize-cli').Migration} */
+
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('PostCategories', {
+    await queryInterface.createTable('posts_categories', {
       post_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         primaryKey: true,
         references: {
-          model: 'blogPosts',
+          model: 'blog_posts',
           key: 'id',
         }
       },
@@ -17,7 +17,7 @@ module.exports = {
         allowNull: false,
         primaryKey: true,
         references: {
-          model: 'Categories',
+          model: 'categories',
           key: 'id',
         },
       },
@@ -31,7 +31,7 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('PostCategories');
+    await queryInterface.dropTable('posts_categories');
     /**
      * Add reverting commands here.
      *
