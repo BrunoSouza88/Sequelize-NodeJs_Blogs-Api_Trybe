@@ -8,10 +8,15 @@ const getAllUsers = async () => {
   //   console.log('accccccccccccc', acc);
   //   return acc;
   // }, []);
-  // console.log('xablau', users.password);
   return users;
+};
+
+const getOneUser = async (id) => {
+  const user = await User.findOne({ where: { id }, attributes: { exclude: 'password' } });
+  return user;
 };
 
 module.exports = { 
   getAllUsers,
+  getOneUser,
  };

@@ -21,7 +21,17 @@ const getAllUsers = async (_req, res) => {
     return res.status(200).json(users);
 };
 
+const getOneUser = async (req, res) => {
+  const { id } = req.params;
+  const oneUser = await userService.getOneUser(id);
+  if (!oneUser) {
+    return res.status(404).json({ message: 'User does not exist' });
+  }
+  return res.status(200).json(oneUser);
+};
+
 module.exports = {
   createUser, 
   getAllUsers,
+  getOneUser,
 };

@@ -1,6 +1,5 @@
 const displayNameValidator = async (req, res, next) => {
   const { displayName } = req.body;
-  console.log('display name validator', displayName);
   if (!displayName || displayName.length < 8) {
     return res
     .status(400)
@@ -22,13 +21,13 @@ const passwordValidator = async (req, res, next) => {
 
 const emailValidator = async (req, res, next) => {
   const { email } = req.body;
-  console.log('email validator', email);
   const emailRegex = /\S+@\S+\.\S+/;
   if (!emailRegex.test(email)) {
     return res.status(400).json({ message: '"email" must be a valid email' });
   }
   next();
 };
+
 module.exports = {
   displayNameValidator,
   passwordValidator,
