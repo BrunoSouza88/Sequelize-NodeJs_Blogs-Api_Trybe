@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
 const { User } = require('../models');
+const userService = require('../services/userService');
 
 const createUser = async (req, res) => {
   const { displayName, email, password, image } = req.body;
@@ -15,6 +16,13 @@ const createUser = async (req, res) => {
   return res.status(201).json({ token });
 };
 
+const getAllUsers = async (_req, res) => {
+    const users = await userService.getAllUsers();
+    console.log('get all users controller', users);
+    return res.status(200).json(users);
+};
+
 module.exports = {
   createUser, 
+  getAllUsers,
 };
