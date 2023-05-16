@@ -27,4 +27,9 @@ const findAllService = () => BlogPost.findAll({
     { model: Category, as: 'categories' }],
 });
 
-module.exports = { createPost, findAllService };
+const findByIdService = async (id) => {
+  const postById = await BlogPost.findOne({ where: { id } });
+  return postById;
+}; 
+
+module.exports = { createPost, findAllService, findByIdService };

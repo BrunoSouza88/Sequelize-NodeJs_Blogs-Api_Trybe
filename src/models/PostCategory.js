@@ -19,7 +19,7 @@ const PostCategorySchema = (sequelize, DataTypes) => {
       onDelete: 'CASCADE',
       unique: true,
     },
-    categoryid: {
+    categoryId: {
       allowNull: false,
       type: DataTypes.INTEGER,
       references: {

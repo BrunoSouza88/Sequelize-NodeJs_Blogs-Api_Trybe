@@ -27,4 +27,10 @@ const findAllController = async (_req, res) => {
   }
 };
 
-module.exports = { createPost, findAllController };
+// req 14
+const findByIdController = async (req, _res) => {
+ const { id } = req.params;
+ const postbyId = await postsService.findByIdService(id);
+ console.log(postbyId);
+};
+module.exports = { createPost, findAllController, findByIdController };

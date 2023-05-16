@@ -6,6 +6,7 @@ const postBodyValidator = require('../middlewares/postBodyValidator');
 
 const postsRouter = express.Router();
 
+postsRouter.get('/post/:id', authenticateToken, findAllController);
 postsRouter.get('/post', authenticateToken, findAllController);
 postsRouter.post('/post', authenticateToken, categoriesValidator, postBodyValidator, createPost);
 
