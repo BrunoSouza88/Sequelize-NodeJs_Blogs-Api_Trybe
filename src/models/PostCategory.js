@@ -7,25 +7,46 @@
 
 const PostCategorySchema = (sequelize, DataTypes) => {
   const PostCategoryTable = sequelize.define('PostCategory', {
-    post_id: {
+    postId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'blog_posts',
+        key: 'id',
+      },
+      field: 'post_id',
+      onUpdate: 'CASCADE',
+      onDelete: 'CASCADE',
+      unique: true,
+    },
+    categoryid: {
       allowNull: false,
       type: DataTypes.INTEGER,
+      references: {
+        model: 'categories',
+        key: 'id',
+      },
+      field: 'category_id',
+      onUpdate: 'CASCADE',
+			onDelete: 'CASCADE',
     },
-    category_id: {
-      allowNull: false,
-      type: DataTypes.INTEGER,
-    },
+  },{
+    tableName: 'posts_categories',
+    underscored: true,
+    timestamps: false,
   })
   PostCategoryTable.associate = (models) => {
     models.BlogPost.belongsToMany(models.Category , {
-      as: 'post_id',
       through: PostCategoryTable,
-      foreignKey: 'post_id',
+      as: 'categories',
+      foreignKey: 'postId',
+      otherKey: 'categoryId',
     });
     models.Category.belongsToMany(models.BlogPost, {
-      as: 'category_id',
       through: PostCategoryTable,
-      foreignKey: 'category_id',
+			as: 'BlogPost',
+      foreignKey: 'categoryId',
+			otherKey: 'postId',
     })
   }
   

@@ -19,19 +19,31 @@ const BlogPostSchema = (sequelize, DataTypes) => {
     content: {
       type: DataTypes.STRING,
     },
-    user_id: {
+    userId: {
       type: DataTypes.INTEGER,
+      allowNull: false,
+      field: 'user_id',
+      references: {
+        model: 'Users',
+        key: 'id',
+      },
     },
     published: {
       type: DataTypes.DATE,
+      defaultValue: sequelize.fn('now'),
     },
     updated: {
       type: DataTypes.DATE,
+      defaultValue: sequelize.fn('now'),
     },
+  }, {
+    tableName: 'blog_posts',
+    timestamps: false,
+    underscored: true,
   });
   BlogPostTable.associate = (models) => {
     BlogPostTable.belongsTo(models.User, {
-      foreignKey: 'user_id',
+      foreignKey: 'id',
       as: 'user',
     })
   }
