@@ -5,12 +5,13 @@ const createPost = async (title, content, categoryIds, userId) => {
   console.log('content service', content);
   console.log('categoryIds service', categoryIds);
   console.log('user id service', userId);
-    const categories = await Category.findAll({ where: { id: categoryIds } });
-    console.log('categories service', categories);
     
     const post = await BlogPost.create({ 
       title, content, userId, updated: new Date(), published: new Date() });
-    console.log('ahooy', post);
+      
+    console.log('post service post', post);
+    // const categories = await Category.findAll({ where: { id: categoryIds } });
+    // console.log('categories service', categories); 
     return {
       id: post.id,
       title: post.title,
@@ -27,9 +28,11 @@ const findAllService = () => BlogPost.findAll({
     { model: Category, as: 'categories' }],
 });
 
-const findByIdService = async (id) => {
-  const postById = await BlogPost.findOne({ where: { id } });
-  return postById;
-}; 
-
+const findByIdService = async (id) => BlogPost.findByPk(id, {
+  include: [
+    { model: User, as: 'user', attributes: { exclude: ['password'] } },
+    { model: Category, as: 'categories', through: null },
+  ],
+});
+ 
 module.exports = { createPost, findAllService, findByIdService };
