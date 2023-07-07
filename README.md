@@ -1,14 +1,25 @@
 <h1>Blogs-Api</h1>
 
-<p>This is a project that implements a Blogs API using Sequelize and Node.js.</p>
+<p>This is a project for a Blog API built with Node.js and Sequelize. The project serves as an example of building a RESTful API for a blogging platform.</p>
+
+<h2>Technologies Used</h2>
+
+<p>The project utilizes the following technologies:</p>
+
+<ul>
+  <li>Node.js</li>
+  <li>Express.js</li>
+  <li>Sequelize</li>
+  <li>MySQL</li>
+  <li>JSON Web Tokens (JWT)</li>
+</ul>
 
 <h2>Prerequisites</h2>
 
 <p>Before you begin, ensure that you meet the following requirements:</p>
 
 <ul>
-  <li>Have Node.js installed: <a href="https://nodejs.org/en/download/">Node.js Downloads</a>.</li>
-  <li>Have a database management system (e.g., MySQL, PostgreSQL) installed and running.</li>
+  <li>Have Node.js and MySQL installed.</li>
 </ul>
 
 <h2>Installation</h2>
@@ -28,32 +39,18 @@
 
   <pre><code>npm install</code></pre>
 
-  <li>Create a `.env` file based on the provided `.env.example` file, and update the environment variables with your database connection details.</li>
+  <li>Set up the database:</li>
 
-  <li>Run the database migrations:</li>
+  <p>Create a MySQL database and update the configuration in the <code>config/database.js</code> file.</p>
 
-  <pre><code>npx sequelize-cli db:migrate</code></pre>
-
-  <li>Start the server:</li>
+  <li>Start the application:</li>
 
   <pre><code>npm start</code></pre>
-
-  <li>Access the API endpoints using a tool like Postman or cURL.</li>
 </ol>
 
 <h2>Usage</h2>
 
-<p>The API provides the following endpoints:</p>
-
-<ul>
-  <li>GET `/blogs` - Get a list of all blogs.</li>
-  <li>GET `/blogs/:id` - Get a specific blog by ID.</li>
-  <li>POST `/blogs` - Create a new blog.</li>
-  <li>PUT `/blogs/:id` - Update an existing blog by ID.</li>
-  <li>DELETE `/blogs/:id` - Delete a blog by ID.</li>
-</ul>
-
-<p>Make HTTP requests to the appropriate endpoints using tools like Postman or cURL.</p>
+<p>The API allows users to perform CRUD operations on blog posts and comments. Users can create new blog posts, retrieve existing posts, update post information, and delete posts. Users can also add comments to blog posts and manage comments by updating or deleting them.</p>
 
 <h2>Contributing</h2>
 
@@ -73,6 +70,6 @@
 
 <h2>Contact</h2>
 
-<p>Bruno Souza - <a href="mailto:bmsouza88@gmail">bmsouza88@gmail.com</a></p>
+<p>Bruno Souza - <a href="mailto:bmsouza88@gmail.com">bmsouza88@gmail.com</a></p>
 
 <p>Project Link: <a href="https://github.com/BrunoSouza88/Sequelize-NodeJs_Blogs-Api_Trybe">https://github.com/BrunoSouza88/Sequelize-NodeJs_Blogs-Api_Trybe</a></p>
