@@ -1,4 +1,4 @@
-<h1>Sequelize-NodeJs_Blogs-Api_Trybe</h1>
+<h1>Blogs-Api</h1>
 
 <p>This is a project that implements a Blogs API using Sequelize and Node.js.</p>
 
